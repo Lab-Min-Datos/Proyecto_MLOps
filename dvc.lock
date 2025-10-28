@@ -1,7 +1,26 @@
 schema: '2.0'
 stages:
   data_prep:
-    cmd: "\n"
+    cmd: python src/data_prep.py --input data/raw/telco_churn.csv --output 
+      data/processed/telco_clean.csv --params params.yaml
+    deps:
+    - path: data/raw/telco_churn.csv
+      hash: md5
+      md5: 006527876bfe18c977d74eb4bc59443f
+      size: 873370
+    - path: params.yaml
+      hash: md5
+      md5: e5bbaefe0f2c06ceee67cef5a10788bc
+      size: 292
+    - path: src/data_prep.py
+      hash: md5
+      md5: 9f663e91e654c01c34fa4c5dc4194413
+      size: 1372
+    outs:
+    - path: data/processed/telco_clean.csv
+      hash: md5
+      md5: e2866164e0ee2db726d294879d9374a2
+      size: 1602691
   train:
     cmd: python src/train.py --data data/processed/telco_clean.csv --model 
       models/churn_model.pkl --params params.yaml --metrics metrics.json
