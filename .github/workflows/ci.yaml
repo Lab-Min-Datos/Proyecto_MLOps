@@ -25,22 +25,35 @@ jobs:
           pip install -r requirements.txt
           pip install "dvc[http]" dagshub "mlflow>=2,<3"
 
+      # ========== MLflow AUTH SETUP in Github Actions ==========
+      - name: Configure MLflow authentication
+        env:
+          DAGSHUB_MLFLOW_TOKEN: ${{ secrets.DAGSHUB_MLFLOW_TOKEN }}
+        run: |
+          echo "MLFLOW_TRACKING_USERNAME=token" >> $GITHUB_ENV
+          echo "MLFLOW_TRACKING_PASSWORD=${DAGSHUB_MLFLOW_TOKEN}" >> $GITHUB_ENV
+          echo "MLFLOW_TRACKING_URI=https://dagshub.com/Lab-Min-Datos/Proyecto_MLOps.mlflow" >> $GITHUB_ENV
+
+      # ========== DVC REMOTE AUTH ==========
       - name: Configure DVC remote for DagsHub
         env:
           DAGSHUB_USER: ${{ secrets.DAGSHUB_USER }}
           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
-          # Configurar autenticación para el remote REAL: 'dagshub'
+          # Remote REAL: 'dagshub'
           dvc remote modify dagshub --local auth basic
           dvc remote modify dagshub --local user "$DAGSHUB_USER"
           dvc remote modify dagshub --local password "$DAGSHUB_TOKEN"
 
+      # ========== DVC PULL ==========
       - name: Pull data with DVC
         run: dvc pull -v
 
+      # ========== RUN PIPELINE ==========
       - name: Run DVC pipeline
         run: dvc repro -v
 
+      # ========== SHOW METRICS ==========
       - name: Show metrics
         run: |
           echo "=== dvc metrics show ==="
