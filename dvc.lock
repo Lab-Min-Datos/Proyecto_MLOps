@@ -10,8 +10,8 @@ stages:
       size: 873370
     - path: params.yaml
       hash: md5
-      md5: e5bbaefe0f2c06ceee67cef5a10788bc
-      size: 292
+      md5: cff002847b36a6a24310c107e857fbf5
+      size: 272
     - path: src/data_prep.py
       hash: md5
       md5: 9f663e91e654c01c34fa4c5dc4194413
@@ -31,18 +31,18 @@ stages:
       size: 1602691
     - path: params.yaml
       hash: md5
-      md5: e5bbaefe0f2c06ceee67cef5a10788bc
-      size: 292
+      md5: cff002847b36a6a24310c107e857fbf5
+      size: 272
     - path: src/train.py
       hash: md5
-      md5: e0c239ecf9ef9649cde6211f792fc8d4
-      size: 1912
+      md5: d24a24d1cda7e52f8aa67becdead30cc
+      size: 3761
     outs:
     - path: metrics.json
       hash: md5
-      md5: 7b71893f795e069206749fd2421a02e1
-      size: 125
+      md5: ec76dfc644c0de97f272d17a720a60c0
+      size: 123
     - path: models/churn_model.pkl
       hash: md5
-      md5: 2dc272b72d38a213fb9025a5be013f56
-      size: 2103
+      md5: e5073120dbcc1fe02b9b5b9bda69ae9f
+      size: 2155
