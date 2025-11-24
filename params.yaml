@@ -1,9 +1,9 @@
 model:
   type: BernoulliNB
-  alpha: 2.0
+  alpha: 1.0
   fit_prior: true
 split:
-  test_size: 0.2
+  test_size: 0.3
   random_state: 42
 paths:
   raw_data: data/raw/telco_churn.csv
