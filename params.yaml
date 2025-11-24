@@ -1,6 +1,6 @@
 model:
   type: BernoulliNB
-  alpha: 2.0
+  alpha: .7
   fit_prior: true
 split:
   test_size: 0.2
