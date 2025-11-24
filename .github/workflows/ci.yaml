@@ -48,7 +48,7 @@ jobs:
 
       # ========== DVC PULL ==========
       - name: Pull data with DVC
-        run: dvc pull -v
+        run: dvc pull -v data/raw/telco_churn.csv
 
       # ========== RUN PIPELINE ==========
       - name: Run DVC pipeline
