@@ -10,8 +10,8 @@ stages:
       size: 873370
     - path: params.yaml
       hash: md5
-      md5: cff002847b36a6a24310c107e857fbf5
-      size: 272
+      md5: 89e9261ea164873b000befc4b68a357f
+      size: 274
     - path: src/data_prep.py
       hash: md5
       md5: 9f663e91e654c01c34fa4c5dc4194413
@@ -31,8 +31,8 @@ stages:
       size: 1602691
     - path: params.yaml
       hash: md5
-      md5: cff002847b36a6a24310c107e857fbf5
-      size: 272
+      md5: 89e9261ea164873b000befc4b68a357f
+      size: 274
     - path: src/train.py
       hash: md5
       md5: d24a24d1cda7e52f8aa67becdead30cc
@@ -40,9 +40,37 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: ec76dfc644c0de97f272d17a720a60c0
-      size: 123
+      md5: e8d24951628a888d9c726f93dd0fcd41
+      size: 136
     - path: models/churn_model.pkl
       hash: md5
-      md5: e5073120dbcc1fe02b9b5b9bda69ae9f
+      md5: 4cd87626ef54af8e44bc892f9cda73e5
       size: 2155
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/telco_clean.csv
+      hash: md5
+      md5: e2866164e0ee2db726d294879d9374a2
+      size: 1602691
+    - path: models/churn_model.pkl
+      hash: md5
+      md5: 4cd87626ef54af8e44bc892f9cda73e5
+      size: 2155
+    - path: params.yaml
+      hash: md5
+      md5: 89e9261ea164873b000befc4b68a357f
+      size: 274
+    - path: src/evaluate.py
+      hash: md5
+      md5: 2def2104f3c0e98a3c8d8c243aa7b982
+      size: 2668
+    outs:
+    - path: reports/metrics_final.json
+      hash: md5
+      md5: b330c42db43ff2dc23ac78b7d4a0bfe9
+      size: 170
+    - path: reports/roc_curve.png
+      hash: md5
+      md5: 2cd99475c48a9efd1c937101e114fda1
+      size: 35358
