@@ -20,4 +20,16 @@ stages:
     - models/churn_model.pkl
     metrics:
     - metrics.json
+
+    evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/churn_model.pkl
+      - data/processed/telco_clean.csv
+      - params.yaml
+    outs:
+      - reports/metrics_final.json
+      - reports/roc_curve.png
+
        
