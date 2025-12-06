@@ -24,12 +24,10 @@ stages:
   evaluate:
     cmd: python src/evaluate.py
     deps:
-      - src/evaluate.py
-      - models/churn_model.pkl
-      - data/processed/telco_clean.csv
-      - params.yaml
+    - data/processed/telco_clean.csv
+    - models/churn_model.pkl
+    - params.yaml
+    - src/evaluate.py
     outs:
-      - reports/metrics_final.json
-      - reports/roc_curve.png
-
-       
+    - reports/metrics_final.json
+    - reports/roc_curve.png
