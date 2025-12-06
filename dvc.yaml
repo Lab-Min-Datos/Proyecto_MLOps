@@ -21,7 +21,7 @@ stages:
     metrics:
     - metrics.json
 
-    evaluate:
+  evaluate:
     cmd: python src/evaluate.py
     deps:
       - src/evaluate.py
