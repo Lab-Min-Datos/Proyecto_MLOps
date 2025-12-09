@@ -9,10 +9,16 @@ stages:
           cache: false
 
   train:
-    cmd: python src/train.py
+    cmd: >
+      python src/train.py
+      --data data/processed/telco_clean.csv
+      --model models/churn_model.pkl
+      --params params.yaml
+      --metrics metrics.json
     deps:
       - data/processed/telco_clean.csv
       - src/train.py
+      - params.yaml
     outs:
       - models/churn_model.pkl:
           cache: false
