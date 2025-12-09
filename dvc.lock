@@ -44,7 +44,7 @@ stages:
       size: 136
     - path: models/churn_model.pkl
       hash: md5
-      md5: e188d8d5fc09e5292aacc5d801d2df23
+      md5: 894411386d8232c83a0d0974844b8530
       size: 2155
   evaluate:
     cmd: python src/evaluate.py
@@ -55,7 +55,7 @@ stages:
       size: 1602691
     - path: models/churn_model.pkl
       hash: md5
-      md5: e188d8d5fc09e5292aacc5d801d2df23
+      md5: 894411386d8232c83a0d0974844b8530
       size: 2155
     - path: src/evaluate.py
       hash: md5
