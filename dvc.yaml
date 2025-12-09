@@ -2,23 +2,29 @@ stages:
   data_prep:
     cmd: python src/data_prep.py
     deps:
-    - data/raw/telco_churn.csv
-    - src/data_prep.py
+      - data/raw/telco_churn.csv
+      - src/data_prep.py
     outs:
-    - data/processed/telco_clean.csv
+      - data/processed/telco_clean.csv
+
   train:
     cmd: python src/train.py
     deps:
-    - data/processed/telco_clean.csv
-    - src/train.py
+      - data/processed/telco_clean.csv
+      - src/train.py
     outs:
-    - metrics.json
-    - models/churn_model.pkl
+      - models/churn_model.pkl:
+          cache: false
+      - metrics.json:
+          cache: false
+
   evaluate:
     cmd: python src/evaluate.py
     deps:
-    - models/churn_model.pkl
-    - src/evaluate.py
+      - models/churn_model.pkl
+      - src/evaluate.py
     outs:
-    - reports/metrics_final.json
-    - reports/roc_curve.png
+      - reports/metrics_final.json:
+          cache: false
+      - reports/roc_curve.png:
+          cache: false
