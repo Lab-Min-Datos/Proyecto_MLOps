@@ -5,7 +5,8 @@ stages:
       - data/raw/telco_churn.csv
       - src/data_prep.py
     outs:
-      - data/processed/telco_clean.csv
+      - data/processed/telco_clean.csv:
+          cache: false
 
   train:
     cmd: python src/train.py
