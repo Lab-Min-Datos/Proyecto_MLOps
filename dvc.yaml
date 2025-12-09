@@ -2,28 +2,28 @@ stages:
   data_prep:
     cmd: python src/data_prep.py --input data/raw/telco_churn.csv --output data/processed/telco_clean.csv --params params.yaml
     deps:
-      - src/data_prep.py
       - data/raw/telco_churn.csv
       - params.yaml
+      - src/data_prep.py
     outs:
       - data/processed/telco_clean.csv
 
   train:
     cmd: python src/train.py --data data/processed/telco_clean.csv --model models/churn_model.pkl --params params.yaml --metrics metrics.json
     deps:
-      - src/train.py
       - data/processed/telco_clean.csv
       - params.yaml
+      - src/train.py
     outs:
-      - models/churn_model.pkl
       - metrics.json
+      - models/churn_model.pkl
 
   evaluate:
     cmd: python src/evaluate.py
     deps:
-      - src/evaluate.py
       - data/processed/telco_clean.csv
       - models/churn_model.pkl
+      - src/evaluate.py
     outs:
       - reports/metrics_final.json
       - reports/roc_curve.png
