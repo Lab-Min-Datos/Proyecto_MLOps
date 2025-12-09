@@ -1,5 +1,4 @@
 [core]
     remote = dagshub
-    autostage = true
 ['remote "dagshub"']
     url = https://dagshub.com/Lab-Min-Datos/Proyecto_MLOps.dvc
